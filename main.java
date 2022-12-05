@@ -1,3 +1,5 @@
+import java.util.HashMap;
+
 public class main {
     public static void main(String[] args) {
         // StackuseLinkedlist myStack = new StackuseLinkedlist();
@@ -30,8 +32,9 @@ public class main {
         }
         myRERecusiveStack.show();
 
-        myRERecusiveStack.pop();
+        System.out.println(myRERecusiveStack.remove());
         myRERecusiveStack.show();
-
+        // Map map = new HashMap<>();
+        
     }
 }

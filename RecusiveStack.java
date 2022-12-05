@@ -28,29 +28,24 @@ public class RecusiveStack implements IStackQueue{
 
     @Override
     public int pop() {
-        // TODO Auto-generated method stub
-        if(isEmty()){
-            return -1;
-        }
+        // if(isEmty()){
+        //     return -1;
+        // }
         int value = topNode.value;
         topNode = topNode.next;
-        if(!isEmty()){
-            
-            // return value;
-        }
-        return pop();
-        
+        return value;
     }
 
-    // public void rspop(){
-    //     // if(isEmty()){
-    //     //     return -1;
-    //     // }
-    //     int value = topNode.value;
-    //     topNode = topNode.next;
-    //     // rspop();
+    public int remove(){
+        if(isEmty()){
+            return 0;
+        }
+        pop();
+        // System.out.println(topNode.value);
+        
+        return remove();
+    }
 
-    // }
 
     @Override
     public boolean isEmty() {
