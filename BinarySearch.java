@@ -1,31 +1,33 @@
+import java.util.Arrays;
+
 public class BinarySearch {
+
     int binarySearch(int arr[], int x){
-        int first=0, last = arr.length-1;
+        SortArr sort = new SortArr();
+        //sort array input
+        int[] arrAfterSort = sort.sort(arr);
+
+        int first=0, last = arrAfterSort.length-1;
+        
         while(first <= last){
             int mid = (first + last) / 2;
-
-            if(arr[mid]==x){
+            if(arrAfterSort[mid]==x){
                 return mid;
             }
-
-            if(arr[mid] < x){
+            if(arrAfterSort[mid] < x){
                 first = mid+1;
             }else{
                 last = mid - 1;
             }
-
-
         }
-
-
         return -1;
     }
 
-
+    
     public static void main(String[] args) {
         BinarySearch ob = new BinarySearch();
 
-        int arr[] = {1,2,3,4,5,6,7,8,9,10};
+        int arr[] = {1,2,3,11,5,6,7,8,9,10};
         int n= arr.length;
         int x = 9;
         int result = ob.binarySearch(arr, x);
