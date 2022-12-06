@@ -63,5 +63,19 @@ public class QueueLinkedlist implements IStackQueue {
             }
         }
     }
+
+    public static void main(String[] args) {
+        QueueLinkedlist mqueue = new QueueLinkedlist();
+
+       for(int i=0;i<5;i++){
+        mqueue.push(i);
+       }
+       mqueue.show();
+
+       for(int i=0;i<6;i++){
+        mqueue.pop();
+        mqueue.show();
+       }
+    }
     
 }
