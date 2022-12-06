@@ -64,5 +64,11 @@ public class StackuseLinkedlist implements IStackQueue {
         }
         
     }
+
+    public static void main(String[] args) {
+        StackuseLinkedlist mStack = new StackuseLinkedlist();
+    
+        
+    }
     
 }
