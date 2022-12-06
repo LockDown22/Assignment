@@ -29,8 +29,8 @@ public class InterpolationSearch {
 
     public static void main(String[] args) {
         InterpolationSearch interpolationSearch = new InterpolationSearch();
-        int arr[] = {1,2,3,5,9,12,14,55};
-        int x = 9;
+        int arr[] = {1,2,3,5,0,12,14,55};
+        int x = 0;
         int result =  interpolationSearch.interpolationSearch(arr, x);
 
         System.out.println(result);

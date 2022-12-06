@@ -41,7 +41,7 @@ public class MyMap extends AbstractMap implements Cloneable, Serializable {
               .getValue()));
     }
 
-    public int hashCode() {
+    public int hashCode() {                                                                                                                                                                                                    
       int keyHash = (key == null ? 0 : key.hashCode());
       int valueHash = (value == null ? 0 : value.hashCode());
       return keyHash ^ valueHash;

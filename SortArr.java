@@ -11,10 +11,9 @@ public class SortArr{
                  }     
               }     
           }    
-
-
         return intArray;
     }
+    
 
 
     
