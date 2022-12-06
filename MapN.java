@@ -40,9 +40,13 @@ public class MapN<K, V> {
             if(n.key.equals(key)){
                 if(n.pre == null){
                     n = n.next;
+                    n.pre = null;
+
                 }else if(n.next == null){
-                    n = n.pre;
-                }else{;
+                    node = node.pre;
+                    node.next=null;
+                    System.out.println(n.next);
+                }else{
                     n.pre.next = n.next;
                     n.next.pre = n.pre;
                 }
@@ -72,8 +76,8 @@ public class MapN<K, V> {
        }
 
        mymap2.show();
-       System.out.println(mymap2.remove(2));
-       System.out.println(mymap2.remove(1));
+    //    System.out.println(mymap2.remove(2));
+       System.out.println(mymap2.remove(5));
        mymap2.show();
     }
 }
