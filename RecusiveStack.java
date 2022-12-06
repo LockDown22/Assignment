@@ -28,9 +28,6 @@ public class RecusiveStack implements IStackQueue{
 
     @Override
     public int pop() {
-        // if(isEmty()){
-        //     return -1;
-        // }
         int value = topNode.value;
         topNode = topNode.next;
         return value;
@@ -38,11 +35,10 @@ public class RecusiveStack implements IStackQueue{
 
     public int remove(){
         if(isEmty()){
+            System.out.println("Stack is empty");
             return 0;
         }
         pop();
-        // System.out.println(topNode.value);
-        
         return remove();
     }
 
@@ -75,6 +71,16 @@ public class RecusiveStack implements IStackQueue{
         
     }
 
-    
+    public static void main(String[] args) {
+        RecusiveStack mstack = new RecusiveStack();
+
+        for(int i = 0; i<=5;i++){
+            mstack.push(i);
+        }
+        mstack.show();
+
+        mstack.remove();
+
+    }
     
 }
