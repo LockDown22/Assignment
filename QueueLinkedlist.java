@@ -72,7 +72,7 @@ public class QueueLinkedlist implements IStackQueue {
        }
        mqueue.show();
 
-       for(int i=0;i<6;i++){
+       for(int i=0;i<5;i++){
         mqueue.pop();
         mqueue.show();
        }
