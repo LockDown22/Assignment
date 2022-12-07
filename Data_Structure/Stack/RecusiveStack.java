@@ -24,16 +24,25 @@ public class RecusiveStack implements IStackQueue{
             Node node = new Node(value);
             node.next = topNode;
             topNode = node;
-            return push(value);
+            return true;
         }
         return false;
     }
 
     @Override
     public int pop() {
-        int value = topNode.value;
-        topNode = topNode.next;
+        int value;
+        if(isEmty()){
+            System.out.println("Stack is empty!");
+            return 0;
+        }else{
+            value = topNode.value;
+            topNode = topNode.next;
+            pop();
+        }
+        System.out.println(value);
         return value;
+
     }
 
 
@@ -68,9 +77,9 @@ public class RecusiveStack implements IStackQueue{
     public static void main(String[] args) {
         RecusiveStack mstack = new RecusiveStack();
 
-        // for(int i = 0; i<=5;i++){
-            mstack.push(1);
-        // }
+        for(int i = 0; i<=5;i++){
+            mstack.push(i);
+        }
         mstack.show();
 
         mstack.pop();
