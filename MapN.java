@@ -25,14 +25,14 @@ public class MapN<K, V> {
     }
 
 
-    Object get(K key){
-        for(Node n = node; node!=null; n = node.pre){
-            if(n.key ==key){
-                return n.values;
-            }
-        }
-        return null;
-    }
+    // Object get(K key){
+    //     for(Node n = node; node!=null; n = node.pre){
+    //         if(n.key ==key){
+    //             return n.values;
+    //         }
+    //     }
+    //     return null;
+    // }
 
 
     Boolean remove(K key){
@@ -44,7 +44,7 @@ public class MapN<K, V> {
 
                 }else if(n.next == null){
                     node = node.pre;
-                    node.next=null;
+                    node.next = null;
                     System.out.println(n.next);
                 }else{
                     n.pre.next = n.next;
@@ -76,7 +76,6 @@ public class MapN<K, V> {
        }
 
        mymap2.show();
-    //    System.out.println(mymap2.remove(2));
        System.out.println(mymap2.remove(5));
        mymap2.show();
     }
