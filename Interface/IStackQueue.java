@@ -1,3 +1,4 @@
+package Interface;
 public interface IStackQueue{
     public boolean push(int value);
     public int pop();

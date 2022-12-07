@@ -1,3 +1,4 @@
+package Agorithm.Sort;
 public class QuickSort {
 
     int quickSort(int arr[], int left, int right) {

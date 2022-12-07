@@ -1,3 +1,4 @@
+package Agorithm;
 public class SortArr{
 
     public int[] sort(int[] intArray){

@@ -1,4 +1,7 @@
+package Agorithm.Search;
 import javax.security.auth.x500.X500PrivateCredential;
+
+import Agorithm.SortArr;
 
 public class InterpolationSearch {
     

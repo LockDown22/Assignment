@@ -1,9 +1,12 @@
+package Agorithm.Search;
 import java.util.Arrays;
+
+import Agorithm.SortArr;;
 
 public class BinarySearch {
 
     int binarySearch(int arr[], int x){
-        SortArr sort = new SortArr();
+            SortArr sort = new SortArr();
         //sort array input
         int[] arrAfterSort = sort.sort(arr);
 

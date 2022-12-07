@@ -1,3 +1,6 @@
+package Data_Structure.Queue;
+import Interface.IStackQueue;
+
 public class QueueLinkedlist implements IStackQueue {
 
     private class Node{
@@ -29,19 +32,18 @@ public class QueueLinkedlist implements IStackQueue {
 
     @Override
     public int pop() {
-        // TODO Auto-generated method stub
         if(isEmty()){
             System.out.println("Stack empty");
         }
-        // if (headNode.next == null) {
-        //     return headNode.value;
-        // } else {
-        //     headNode = headNode.next;
-        //     pop();
-        // }
 
+        // if(headNode.next == null){
+        //         headNode =null;
+        // }else{
             int value = headNode.value;
             headNode = headNode.next;
+            // pop();
+        // }
+
         return value;
     }
 

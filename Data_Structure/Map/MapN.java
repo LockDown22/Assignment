@@ -1,3 +1,4 @@
+package Data_Structure.Map;
 public class MapN<K, V> {
     class Node {
         K key;

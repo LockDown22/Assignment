@@ -1,3 +1,4 @@
+package Agorithm.Search;
 public class LinearSearch {
     
     int linearSearch(int arr[], int target){

@@ -1,3 +1,6 @@
+package Data_Structure.Stack;
+import Interface.IStackQueue;
+
 public class RecusiveStack implements IStackQueue{
 
     private class Node{

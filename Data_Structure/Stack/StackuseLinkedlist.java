@@ -1,3 +1,6 @@
+package Data_Structure.Stack;
+import Interface.IStackQueue;
+
 public class StackuseLinkedlist implements IStackQueue {
 
     private class Node{
