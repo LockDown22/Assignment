@@ -1,7 +1,7 @@
 package Data_Structure.Stack;
-import Interface.IStackQueue;
+import Data_Structure.Interface.IStackQueue;
 
-public class StackuseLinkedlist implements IStackQueue {
+public class Stack implements IStackQueue {
 
     private class Node{
         int value;
@@ -13,7 +13,7 @@ public class StackuseLinkedlist implements IStackQueue {
 
     Node topNode;
 
-    StackuseLinkedlist(){
+    Stack(){
         topNode = null;
     }
 
@@ -69,7 +69,7 @@ public class StackuseLinkedlist implements IStackQueue {
     }
 
     public static void main(String[] args) {
-        StackuseLinkedlist mStack = new StackuseLinkedlist();
+        Stack mStack = new Stack();
     
         
     }

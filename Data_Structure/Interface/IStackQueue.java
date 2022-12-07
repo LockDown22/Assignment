@@ -1,4 +1,4 @@
-package Interface;
+package Data_Structure.Interface;
 public interface IStackQueue{
     public boolean push(int value);
     public int pop();

@@ -1,5 +1,5 @@
 package Data_Structure.Stack;
-import Interface.IStackQueue;
+import Data_Structure.Interface.IStackQueue;
 
 public class RecusiveStack implements IStackQueue{
 
@@ -24,7 +24,7 @@ public class RecusiveStack implements IStackQueue{
             Node node = new Node(value);
             node.next = topNode;
             topNode = node;
-            return true;
+            return push(value);
         }
         return false;
     }
@@ -34,15 +34,6 @@ public class RecusiveStack implements IStackQueue{
         int value = topNode.value;
         topNode = topNode.next;
         return value;
-    }
-
-    public int remove(){
-        if(isEmty()){
-            System.out.println("Stack is empty");
-            return 0;
-        }
-        pop();
-        return remove();
     }
 
 
@@ -77,12 +68,12 @@ public class RecusiveStack implements IStackQueue{
     public static void main(String[] args) {
         RecusiveStack mstack = new RecusiveStack();
 
-        for(int i = 0; i<=5;i++){
-            mstack.push(i);
-        }
+        // for(int i = 0; i<=5;i++){
+            mstack.push(1);
+        // }
         mstack.show();
 
-        mstack.remove();
+        mstack.pop();
 
     }
     

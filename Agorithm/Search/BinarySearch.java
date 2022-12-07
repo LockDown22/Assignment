@@ -1,7 +1,7 @@
 package Agorithm.Search;
 import java.util.Arrays;
 
-import Agorithm.SortArr;;
+import Agorithm.Extensions.SortArr;;
 
 public class BinarySearch {
 
