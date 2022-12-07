@@ -9,6 +9,7 @@ public class QueueLinkedlist implements IStackQueue {
     }
 
     Node headNode,tailNode;
+
     QueueLinkedlist(){
         tailNode = headNode = null;
     };
@@ -32,6 +33,13 @@ public class QueueLinkedlist implements IStackQueue {
         if(isEmty()){
             System.out.println("Stack empty");
         }
+        // if (headNode.next == null) {
+        //     return headNode.value;
+        // } else {
+        //     headNode = headNode.next;
+        //     pop();
+        // }
+
             int value = headNode.value;
             headNode = headNode.next;
         return value;
