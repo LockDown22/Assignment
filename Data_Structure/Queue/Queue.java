@@ -1,7 +1,7 @@
 package Data_Structure.Queue;
-import Interface.IStackQueue;
+import Data_Structure.Interface.IStackQueue;
 
-public class QueueLinkedlist implements IStackQueue {
+public class Queue implements IStackQueue {
 
     private class Node{
         int value;
@@ -13,7 +13,7 @@ public class QueueLinkedlist implements IStackQueue {
 
     Node headNode,tailNode;
 
-    QueueLinkedlist(){
+    Queue(){
         tailNode = headNode = null;
     };
 
@@ -75,7 +75,7 @@ public class QueueLinkedlist implements IStackQueue {
     }
 
     public static void main(String[] args) {
-        QueueLinkedlist mqueue = new QueueLinkedlist();
+        Queue mqueue = new Queue();
 
        for(int i=0;i<5;i++){
         mqueue.push(i);
