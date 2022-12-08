@@ -12,7 +12,10 @@ public class InterpolationSearch {
         int first = 0, last = arrAfterSort.length-1;
 
         while(first <= last && x >= arrAfterSort[first]&& x < arrAfterSort[last]){
+
+            //mid value (value1), based on fist + (last - first) * 1/2
             int value1 = (x-arrAfterSort[first])/(arrAfterSort[last]-first);
+            
             int value2 = (last-first);
             int target = first + value1*value2;
 

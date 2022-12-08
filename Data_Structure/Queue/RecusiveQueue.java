@@ -45,9 +45,9 @@ public class RecusiveQueue{
             headNode = headNode.next;
             return value;
         }
-           
         return pop();
     }
+
 
 
     public boolean isEmty() {
@@ -84,6 +84,12 @@ public class RecusiveQueue{
        mqueue.show();
 
     //    for(int i=0;i<5;i++){
+        mqueue.pop();
+        mqueue.show();
+
+        mqueue.pop();
+        mqueue.show();
+
         mqueue.pop();
         mqueue.show();
     //    }
