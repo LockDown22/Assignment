@@ -1,59 +1,66 @@
 package Data_Structure.Queue;
-import Data_Structure.Interface.IStackQueue;
 
-public class Queue implements IStackQueue {
 
-    private class Node{
+public class RecusiveQueue{
+    
+     private class Node{
         int value;
         Node next;
-        Node(int value){
+        Node pre;
+        public Node(int value,Node node){
             this.value = value;
+            this.pre = node;
         }
     }
 
     Node headNode,tailNode;
 
-    Queue(){
+    // public Node node = null;
+
+    RecusiveQueue(){
         tailNode = headNode = null;
     };
 
-    @Override
+  
     public boolean push(int value) {
 
-        Node node = new Node(value);
+        Node fnode = new Node(value,tailNode);
         if(isEmty()){
-           headNode = tailNode = node;   
+           headNode = tailNode = fnode;   
         }else{
-            tailNode.next = node;
-            tailNode = node;
+            tailNode.next = fnode;
+            tailNode = fnode;
         }   
         return false;
     }
 
-    @Override
+
     public int pop() {
         if(isEmty()){
             System.out.println("Stack empty");
             return 0;
         }
+        if(tailNode.pre == null){
             int value = headNode.value;
             headNode = headNode.next;
-        return value;
+            return value;
+        }
+           
+        return pop();
     }
 
-    @Override
+
     public boolean isEmty() {
 
         return headNode == null && tailNode == null;
     }
 
-    @Override
     public boolean isFull() {
 
         return false;
     }
 
-    @Override
+
     public void show() {
 
         if(isEmty()){
@@ -76,10 +83,9 @@ public class Queue implements IStackQueue {
        }
        mqueue.show();
 
-       for(int i=0;i<5;i++){
+    //    for(int i=0;i<5;i++){
         mqueue.pop();
         mqueue.show();
-       }
+    //    }
     }
-    
 }
