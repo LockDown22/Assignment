@@ -1,0 +1,272 @@
+
+I. Single responsibility principle(SRP)
+	- Một class chỉ nên giữ một nhiệm vụ duy nhất 
+	
+	VD: 
+		public class SortArr{
+			//Sắp xếp mảng tăng dần
+			public int[] sortASC(int[] intArray){
+				int temp = 0;
+				for (int i = 0; i <intArray.length; i++) {     
+					for (int j = i+1; j <intArray.length; j++) {     
+						if(intArray[i] >intArray[j]) {      //swap elements if not in order
+						   temp = intArray[i];    
+						   intArray[i] = intArray[j];    
+						   intArray[j] = temp;    
+						 }     
+					  }     
+				  }    
+				return intArray;
+			}
+			
+			//Sắp xếp mảng giảm dần
+			public int[] DESC(int[] intArray){
+				int temp = 0;
+				for (int i = 0; i <intArray.length; i++) {     
+					for (int j = i+1; j <intArray.length; j++) {     
+						if(intArray[i] < intArray[j]) {      //swap elements if not in order
+						   temp = intArray[i];    
+						   intArray[i] = intArray[j];    
+						   intArray[j] = temp;    
+						 }     
+					  }     
+				  }    
+				return intArray;
+			}
+			
+		}
+	
+		- class trên chỉ thực hiện trách nhiệm duy nhất là sắp xếp mảng 
+		- nếu 1 class thưc hiện nhiều trách nhiệm khác nhau thì nó vi phạm nguyên lý Single responsibility principle
+		
+		VD: (class vi phạm nguyên lí)
+		
+			class UserService {
+				// Get data from database
+				public User getUser() {
+					return null;
+				}
+			 
+				// Check validation
+				public boolean isValid() {
+					return true;
+				}
+			 
+				// Show Notification
+				public void showNotification() {
+			 
+				}
+			 
+				// Logging
+				public void logging() {
+					System.out.println("...");
+				}
+			 
+				// Parsing
+				public User parseJson(String json) {
+					return null;
+				}
+			}
+			
+		- class này thực hiện quá nhiều chức năng khác nhau: Lấy dữ liệu từ DB, checkValidate,Hiển thị thông báo, login... 
+		- Issue: - khó khăn trong việc maintain, upgrade, fix bug... khi class phát triển to hơn
+		- Solution: - Tách các chức năng khác nhau trong class ra thành class riêng biệt, mỗi class chỉ nên đảm nhận một chức năng nhất định
+		
+//==============================================================================================================================================================		
+II. Open-Closed Principle (OCP) - Nguyên lý đóng mở		
+	- Mở rộng class mà không sửa đổi bên trong class đó  
+	
+	VD: 
+		- Ta có 1 class student, và method tính học phí 
+		
+		class Student{
+			private maHS;
+			private tenHS;
+			
+			public int tinhHocPhi(int soMon, int tienTrenMotMon){
+				return soMon * tienTrenMotMon
+			}
+			
+		}
+		
+		
+		- Giả sử: + trường có 3 loại học sinh, mỗi loại học sinh có cách tính học phí khác nhau 
+						-Du học sinh: học phí tăng 30% so với học sinh bth
+						-Học sinh giỏi: học phí giảm 20% so với học sinh bth
+						-Học sinh bình thường: học phí tính theo ct (số môn * tiền/môn)
+		
+		ta chỉnh sửa code trong class Student: 
+
+		class Student{
+			private maHS;
+			private tenHS;
+			private loaiHS;
+			
+			public int tinhHocPhi(int soMon, int tienTrenMotMon){
+				
+				int hp = soMon * tienTrenMotMon;
+				if(loaiHS=="duHS"){
+					return (hp*30%)+= hp;
+				}else if(loaiHS == 'hsGioi'){
+					return (hp*20%)-=hp;
+				}else{
+					return hp;
+				}
+				
+			}
+			
+		}
+		
+		- khi sửa code class => trong tương lai có nhiều loại sinh viên khác nhau code lại phải thay đổi 
+		- Issue: - có thể dẫn đến việc code mới làm ảnh hưởng đến code cũ, và làm hỏng luôn cả những dòng code trước đó chạy được
+		- Solution: - Thay vì chỉnh sửa trực tiếp vào class, ta áp dụng nguyên lý (Open / Closed principle - OCP) bằng cách mỗi loại học sinh tạo một class mới kế thừa lại class Student
+			
+		class Student{
+			private maHS;
+			private tenHS;
+			
+			public int tinhHocPhi(int soMon, int tienTrenMotMon){
+				return soMon * tienTrenMotMon
+			}
+			
+		}
+		
+		class DuHocSinh extends Student{
+			
+			public int tinhHocPhi(int soMon,int tienTrenMotMon){
+				
+				return soMon* tienTrenMotMon * 1.3;
+			}
+			
+		}
+		
+		class HocSinhGioi extends Student{
+			
+			public int tinhHocPhi(int soMon,int tienTrenMotMon){
+				
+				return soMon* tienTrenMotMon * 0.8;
+			}
+			
+		}
+		
+		- Trong tương lai khi có thêm loại học sinh mới, ta chỉ cần tạo thêm class kế thừa từ Student mà không làm ảnh hưởng gì đến những class còn lại 
+		
+//==============================================================================================================================================================	
+III. Interface segregation principle (ISP) - Nguyên lý phân tách
+	- Thay vì dùng một interface lớn, ta nên tách nó thành nhiều interface nhỏ với nhiều mục đích cụ thể 
+	
+	VD: 
+	-Ta có interface sau: 
+	
+		public interface IStackQueue{
+			public boolean push(int value);
+			public int pop();
+			public boolean isEmty();
+			public boolean isFull();
+			public void show();
+			public void popAll();
+		}
+	
+	- Nếu interface dài thì việc implement lại sẽ rất cực khổ
+	- Issue: dư thừa code do không dùng đến mà vẫn phải implement
+	- Solution: tách thành interface khác kế thừa lại interface cũ, khi cần dùng ta chỉ cần gọi ra
+	
+	Chúng ta sẽ tách ra như sau: 
+		
+		public interface IStackQueue{
+			public boolean push(int value);
+			public int pop();
+			public boolean isEmty();
+			
+			public void show();
+			
+		}
+		
+		public interface CheckFullAndPopAll extends IStackQueue{
+			public boolean isFull();
+			public void popAll();
+		}
+		
+	
+	- Với một số chức năng đặc biệt ta mới cần sử dụng đến interface CheckFullAndPopAll, những chức năng thông thường chỉ cần sử dụng IStackQueue là đủ.
+	
+//==============================================================================================================================================================	
+IV. Dependency Inversion Principle (DIP) – Nguyên lý đảo ngược phụ thuộc
+	- Các module cấp cao không nên phụ thuộc vào các module cấp thấp. cả 2 nên phụ thuộc vào abstraction 
+	- Các class giao tiếp với nhau thông qua interface chứ không phải thông qua implementation.
+	
+	VD: 
+	-Ta có 3 class A,B,C : 
+		class A {
+		void doSomething() {
+
+				}
+		}
+
+		class B{
+			void doSomething() {
+
+			}
+
+		}
+
+		class C{
+			A aa;
+			B b;
+			void implement(){
+				aa.doSomething();
+				b.doSomething();
+			}
+
+		}
+	
+	- Nếu A hoặc B có sự thay đổi, thì C sẽ bị lỗi bởi vì C phụ thuộc vào A và B
+	- Issue: thay đổi code của A hoặc B thì C sẽ bị ảnh hưởng 
+	- Solution: tạo một interface mới, cho 3 class này giao tiếp với nhau thông qua interface ( tạo 1 interface và cho A và B kế implement lại D) 
+		
+		
+			interface D{
+				void someThing();
+			}
+
+
+
+			class A implements D{
+				void doSomething() {
+
+				}
+
+			@Override
+			public void someThing() {
+				doSomething();
+				}
+			}
+
+
+			class B implements D{
+				void doSomething() {
+
+				}
+
+				@Override
+				public void someThing() {
+					doSomething();
+				}
+
+			}
+
+				class C{
+					ArrayList<D> d;
+					void implement(){
+						for(D mD : d){
+							mD.someThing();
+						}
+					}
+
+				}
+	
+			
+		-Bây giờ nếu ta có chỉnh sửa A hoặc B thì C vẫn sẽ không bị ảnh hưởng 
+		
+	
+	
